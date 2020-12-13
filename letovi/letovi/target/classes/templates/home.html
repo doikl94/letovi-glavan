@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<section>
+    <form th:action="@{/find}">
+        <table>
+            <tr>
+                <td>Polazni Aerodrom:</td>
+                <td><input type="text" th:name="polazniAerodrom" /></td>
+                <td>Odredisni Aerodrom:</td>
+                <td><input type="text" th:name="odredisniAerodrom" /></td>
+            </tr>
+            <tr>
+                <td>Datum Polaska:</td>
+                <td><input type="date" th:name="datumPolaska" /></td>
+                <td>Datum Povratka:</td>
+                <td><input type="date" th:name="datumPovratka" /></td>
+            </tr>
+            <tr>
+                <td>Broj Putnika:</td>
+                <td><input type="number" th:name="brojPutnika" /></td>
+                <td>Valuta:</td>
+                <td><input type="text" th:name="valuta" /></td>
+            </tr>
+            <tr>
+                <td><button type="submit">Submit</button></td>
+            </tr>
+        </table>
+    </form>
+</section>
+<section>
+    <div class="container">
+        <table class="table-content">
+            <thead>
+            <tr>
+                <th style = "width:15%">Polazni Aerodrom</th>
+                <th style = "width:15%">Odredisni Aerodrom</th>
+                <th style = "width:10%">Datum Polaska</th>
+                <th style = "width:10%">Datum Povratka</th>
+                <th style = "width:17.5%">Ruta Polaska</th>
+                <th style = "width:17.5%">Ruta Povratka</th>
+                <th style = "width:5%">Cijena</th>
+                <th style = "width:5%">Valuta</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="let : ${letovi}">
+                <td th:text="${let.polazniAerodrom}"></td>
+                <td th:text="${let.odredisniAerodrom}"></td>
+                <td th:text="${let.getDatumPolaska()}"></td>
+                <td th:text="${let.getDatumPovratka()}"></td>
+                <td th:text="${let.rutaPolaska}"></td>
+                <td th:text="${let.rutaPovratka}"></td>
+                <td th:text="${let.getCijena()}"></td>
+                <td th:text="${let.valuta}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>
